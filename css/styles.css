@@ -452,3 +452,73 @@ body.is-ready .hero__title .line > span { transform: none; }
   .reveal { opacity: 1; transform: none; filter: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------------- Doctors ---------------- */
+.section__head--row { max-width: none; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 30px; }
+.section__head--row > div:first-child { max-width: 680px; }
+.doc-filter { display: flex; flex-wrap: wrap; gap: 8px; padding: 6px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); }
+.doc-filter__btn {
+  padding: 9px 16px; border: 0; border-radius: 999px; background: transparent; color: var(--muted);
+  font: 600 0.86rem var(--font); cursor: pointer; transition: color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.doc-filter__btn:hover { color: var(--text); }
+.doc-filter__btn.is-active { color: #fff; background: linear-gradient(135deg, var(--brand-2), var(--brand-3)); box-shadow: 0 8px 20px -10px var(--brand-glow); }
+
+.doc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.doc {
+  position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; outline: none;
+  background: linear-gradient(180deg, var(--ink-3), var(--ink-2)); border: 1px solid var(--line);
+  transition: border-color 0.4s, box-shadow 0.5s var(--ease), transform 0.6s var(--ease);
+  --mx: 50%; --my: 50%;
+}
+.doc.is-hidden { display: none; }
+.doc:hover, .doc:focus-visible { border-color: rgba(56,125,240,0.5); box-shadow: 0 30px 60px -30px var(--brand-glow); }
+.doc__media { position: relative; aspect-ratio: 4 / 4.6; overflow: hidden; background: radial-gradient(circle at 50% 30%, rgba(56,125,240,0.25), var(--ink-2) 70%); }
+.doc__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(5,7,13,0.85)); pointer-events: none; }
+.doc__photo { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 1s var(--ease), filter 0.6s; filter: saturate(0.92); }
+.doc:hover .doc__photo { transform: scale(1.06); filter: saturate(1.05); }
+.doc-avatar { display: grid; place-items: end center; }
+.doc-avatar svg { width: 62%; height: auto; }
+.doc__exp {
+  position: absolute; left: 14px; bottom: 14px; z-index: 1; padding: 7px 12px; border-radius: 999px;
+  font-size: 0.8rem; color: var(--text); background: rgba(5,7,13,0.7); border: 1px solid var(--line-2); backdrop-filter: blur(8px);
+}
+.doc__exp b { color: var(--brand-2); }
+.doc__body { padding: 20px 22px 24px; }
+.doc__dept { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-2); }
+.doc h3 { margin: 6px 0 4px; font-size: 1.16rem; letter-spacing: -0.02em; }
+.doc__role { margin: 0 0 4px; color: var(--text); font-size: 0.9rem; opacity: 0.85; }
+.doc__qual { margin: 0 0 16px; color: var(--muted); font-size: 0.85rem; }
+.doc:hover .dept__more b { transform: translateX(6px); }
+.doc.reveal.is-in { transition: opacity 1s var(--ease), filter 1s var(--ease), transform 0.6s var(--ease), border-color 0.4s, box-shadow 0.5s var(--ease); }
+
+/* Doctor profile modal */
+.modal__panel--doc { width: min(900px, 100%); padding: 0; }
+.docp { display: grid; grid-template-columns: 0.85fr 1.15fr; }
+.docp__photo { position: relative; min-height: 100%; background: radial-gradient(circle at 50% 30%, rgba(56,125,240,0.3), var(--ink-2) 70%); }
+.docp__img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; object-position: top center; }
+.docp__img.doc-avatar svg { width: 70%; }
+.docp__body { padding: 44px 40px 36px; }
+.docp__role { margin: -4px 0 22px; color: var(--muted); }
+.docp__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 22px; }
+.docp__facts > div { padding: 12px 14px; border-radius: 14px; border: 1px solid var(--line); background: rgba(0,0,0,0.25); }
+.docp__facts strong { display: block; font-size: 0.92rem; font-weight: 600; }
+.docp__about { margin: 0 0 22px; color: var(--muted); }
+.docp__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.docp__tags span { padding: 7px 13px; border-radius: 999px; font-size: 0.84rem; background: rgba(56,125,240,0.12); border: 1px solid rgba(56,125,240,0.3); color: var(--text); }
+
+@media (max-width: 1080px) { .doc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) {
+  .docp { grid-template-columns: 1fr; }
+  .docp__img { min-height: 280px; max-height: 340px; }
+  .docp__body { padding: 28px 22px 26px; }
+}
+@media (max-width: 600px) {
+  .doc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .doc__body { padding: 14px 14px 18px; }
+  .doc h3 { font-size: 1rem; }
+  .doc__role { font-size: 0.82rem; }
+  .doc__qual { font-size: 0.78rem; margin-bottom: 10px; }
+  .doc__exp { left: 8px; bottom: 8px; font-size: 0.72rem; padding: 5px 9px; }
+  .docp__facts { grid-template-columns: 1fr; }
+}

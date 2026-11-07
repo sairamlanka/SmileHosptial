@@ -26,6 +26,60 @@
   /* ---------- Year ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  /* ---------- Doctors (data lives in js/doctors.js) ---------- */
+  const doctors = Array.isArray(window.SMILE_DOCTORS) ? window.SMILE_DOCTORS : [];
+  const docGrid = document.getElementById("docGrid");
+  const docFilter = document.getElementById("docFilter");
+  const AVATAR =
+    '<svg viewBox="0 0 120 150" aria-hidden="true"><circle cx="60" cy="52" r="26" fill="#5b9bff" opacity=".85"/><path d="M14 150c0-30 20-52 46-52s46 22 46 52Z" fill="#387df0" opacity=".85"/></svg>';
+  const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const photoHTML = (d, cls) =>
+    d.photo
+      ? `<img class="${cls}" src="${esc(d.photo)}" alt="Photo of ${esc(d.name)}" loading="lazy" onerror="this.outerHTML=this.dataset.fallback" data-fallback="${esc('<div class="' + cls + ' doc-avatar">' + AVATAR + "</div>")}" />`
+      : `<div class="${cls} doc-avatar">${AVATAR}</div>`;
+
+  if (docGrid && doctors.length) {
+    docGrid.innerHTML = doctors
+      .map(
+        (d, i) => `
+      <article class="doc reveal tilt" data-delay="${i % 4}" data-dept="${esc(d.department)}" data-i="${i}" tabindex="0" role="button" aria-label="${esc(d.name)}, ${esc(d.department)}: view profile">
+        <div class="doc__media">
+          ${photoHTML(d, "doc__photo")}
+          ${d.experience ? `<span class="doc__exp"><b>${esc(d.experience)}+</b> yrs exp.</span>` : ""}
+        </div>
+        <div class="doc__body">
+          <span class="doc__dept">${esc(d.department)}</span>
+          <h3>${esc(d.name)}</h3>
+          <p class="doc__role">${esc(d.designation)}</p>
+          <p class="doc__qual">${esc(d.qualifications)}</p>
+          <span class="dept__more">View profile <b>→</b></span>
+        </div>
+      </article>`
+      )
+      .join("");
+
+    const depts = ["All", ...new Set(doctors.map((d) => d.department))];
+    docFilter.innerHTML = depts
+      .map((d, i) => `<button type="button" role="tab" aria-selected="${i === 0}" class="doc-filter__btn${i === 0 ? " is-active" : ""}" data-filter="${esc(d)}">${esc(d === "Gynecology & Obstetrics" ? "Gynecology" : d)}</button>`)
+      .join("");
+    docFilter.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      docFilter.querySelectorAll("button").forEach((b) => {
+        const on = b === btn;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-selected", String(on));
+      });
+      const f = btn.dataset.filter;
+      docGrid.querySelectorAll(".doc").forEach((card) => {
+        const show = f === "All" || card.dataset.dept === f;
+        card.classList.toggle("is-hidden", !show);
+      });
+    });
+  } else if (docGrid) {
+    document.getElementById("doctors").remove();
+  }
+
   /* ---------- Nav ---------- */
   const nav = document.getElementById("nav");
   const navLinks = document.getElementById("navLinks");
@@ -275,6 +329,60 @@
   );
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.hidden) closeModal();
+  });
+
+
+  /* ---------- Doctor profile modal ---------- */
+  const docModal = document.getElementById("docModal");
+  let docLastFocus = null;
+  let currentDoc = null;
+  const openDoc = (i) => {
+    const d = doctors[i];
+    if (!d) return;
+    currentDoc = d;
+    $("docModalPhoto").innerHTML = photoHTML(d, "docp__img");
+    $("docModalDept").textContent = d.department;
+    $("docModalName").textContent = d.name;
+    $("docModalRole").textContent = d.designation || "";
+    $("docModalExp").textContent = d.experience ? `${d.experience}+ years` : "—";
+    $("docModalQual").textContent = d.qualifications || "—";
+    $("docModalOpd").textContent = d.opd || "—";
+    $("docModalLang").textContent = (d.languages || []).join(", ") || "—";
+    $("docModalAbout").textContent = d.about || "";
+    $("docModalTags").innerHTML = (d.expertise || []).map((t) => `<span>${esc(t)}</span>`).join("");
+    docLastFocus = document.activeElement;
+    docModal.hidden = false;
+    body.style.overflow = "hidden";
+    requestAnimationFrame(() => requestAnimationFrame(() => docModal.classList.add("is-open")));
+    docModal.querySelector(".modal__close").focus();
+  };
+  const closeDoc = () => {
+    docModal.classList.remove("is-open");
+    body.style.overflow = "";
+    setTimeout(() => (docModal.hidden = true), 450);
+    if (docLastFocus) docLastFocus.focus({ preventScroll: true });
+  };
+  if (docGrid) {
+    docGrid.addEventListener("click", (e) => {
+      const card = e.target.closest(".doc");
+      if (card) openDoc(+card.dataset.i);
+    });
+    docGrid.addEventListener("keydown", (e) => {
+      const card = e.target.closest(".doc");
+      if (card && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openDoc(+card.dataset.i); }
+    });
+  }
+  docModal.querySelectorAll("[data-close]").forEach((el) =>
+    el.addEventListener("click", () => {
+      if (el.hasAttribute("data-book-doc") && currentDoc) {
+        [...$("f-dept").options].forEach((o) => (o.selected = o.textContent === currentDoc.department));
+        $("f-msg").value = `Appointment with ${currentDoc.name}. `;
+      }
+      closeDoc();
+    })
+  );
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !docModal.hidden) closeDoc();
   });
 
   /* ---------- Appointment form (static: no backend yet) ---------- */
