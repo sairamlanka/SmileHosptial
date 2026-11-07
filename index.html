@@ -29,6 +29,7 @@
       </a>
       <nav class="nav__links" id="navLinks" aria-label="Main">
         <a href="#departments">Departments</a>
+        <a href="#doctors">Doctors</a>
         <a href="#about">Why Smile</a>
         <a href="#journey">Your Visit</a>
         <a href="#contact">Contact</a>
@@ -178,6 +179,22 @@
       </div>
     </section>
 
+    <!-- ============ DOCTORS ============ -->
+    <!-- Cards are generated from js/doctors.js. Edit that file to change doctors. -->
+    <section class="section" id="doctors">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow reveal">Our Doctors</p>
+            <h2 class="section__title reveal" data-delay="1">Meet the specialists <em>behind every smile.</em></h2>
+            <p class="section__lead reveal" data-delay="2">Experienced consultants who listen first. Tap a doctor to see their full profile.</p>
+          </div>
+          <div class="doc-filter reveal" data-delay="2" role="tablist" aria-label="Filter doctors by department" id="docFilter"></div>
+        </div>
+        <div class="doc-grid" id="docGrid"></div>
+      </div>
+    </section>
+
     <!-- ============ WHY SMILE ============ -->
     <section class="section" id="about">
       <div class="container about">
@@ -297,6 +314,7 @@
       <img src="assets/logo-white.png" alt="Smile Multi Speciality Hospital" class="footer__logo" />
       <nav class="footer__links" aria-label="Footer">
         <a href="#departments">Departments</a>
+        <a href="#doctors">Doctors</a>
         <a href="#about">Why Smile</a>
         <a href="#appointment">Appointments</a>
         <a href="#contact">Contact</a>
@@ -304,6 +322,32 @@
       <p class="footer__copy">© <span id="year"></span> Smile Multi Speciality Hospital. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- ============ DOCTOR PROFILE MODAL ============ -->
+  <div class="modal" id="docModal" role="dialog" aria-modal="true" aria-labelledby="docModalName" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--doc">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="docp">
+        <div class="docp__photo" id="docModalPhoto"></div>
+        <div class="docp__body">
+          <span class="eyebrow" id="docModalDept"></span>
+          <h3 id="docModalName"></h3>
+          <p class="docp__role" id="docModalRole"></p>
+          <div class="docp__facts">
+            <div><span class="label">Experience</span><strong id="docModalExp"></strong></div>
+            <div><span class="label">Qualifications</span><strong id="docModalQual"></strong></div>
+            <div><span class="label">OPD timings</span><strong id="docModalOpd"></strong></div>
+            <div><span class="label">Languages</span><strong id="docModalLang"></strong></div>
+          </div>
+          <p class="docp__about" id="docModalAbout"></p>
+          <h5>Areas of expertise</h5>
+          <div class="docp__tags" id="docModalTags"></div>
+          <a href="#appointment" class="btn btn--primary" data-close data-book-doc>Book with this doctor</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ============ DEPARTMENT MODAL ============ -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
@@ -324,6 +368,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
 
+  <script src="js/doctors.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
