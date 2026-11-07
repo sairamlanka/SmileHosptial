@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Smile Multi Speciality Hospital</title>
   <meta name="description" content="Smile Multi Speciality Hospital: Orthopedics, General Medicine, General Surgery and Gynecology under one roof." />
   <meta name="theme-color" content="#05070d" />
@@ -34,6 +34,10 @@
         <a href="#journey">Your Visit</a>
         <a href="#contact">Contact</a>
         <a href="#appointment" class="btn btn--primary btn--sm">Book Appointment</a>
+        <div class="nav__menu-foot">
+          <a href="tel:+910000000000" class="nav__menu-call"><span class="dot dot--pulse"></span><span><small>24/7 Emergency</small>+91 00000 00000</span></a>
+          <p>Mon – Sat: 9:00 AM – 8:00 PM</p>
+        </div>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span>
@@ -192,6 +196,7 @@
           <div class="doc-filter reveal" data-delay="2" role="tablist" aria-label="Filter doctors by department" id="docFilter"></div>
         </div>
         <div class="doc-grid" id="docGrid"></div>
+        <div class="swipe-progress" aria-hidden="true"><span id="docProgress"></span></div>
       </div>
     </section>
 
@@ -363,6 +368,15 @@
       </div>
       <a href="#appointment" class="btn btn--primary" data-close data-book>Book in this department</a>
     </div>
+  </div>
+
+  <!-- Mobile quick-action bar -->
+  <div class="mbar" id="mbar">
+    <a href="tel:+910000000000" class="mbar__call" aria-label="Call the hospital">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z" fill="currentColor"/></svg>
+      Call
+    </a>
+    <a href="#appointment" class="mbar__book btn btn--primary">Book Appointment</a>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
