@@ -16,19 +16,6 @@
    ========================================================= */
 window.SMILE_DOCTORS = [
   {
-    name: "Dr. Avinash",
-    department: "Orthopedics",
-    designation: "Orthopaedic Surgeon",
-    qualifications: "MS (Ortho)",
-    experience: null,
-    photo: "assets/doctors/dr-avinash.jpg",
-    languages: [],
-    opd: "",
-    about:
-      "Dr. Avinash is an Orthopaedic Surgeon at Smile Multi Speciality Hospital, caring for patients with bone, joint and spine problems, from fractures and injuries to long-term joint pain.",
-    expertise: [],
-  },
-  {
     name: "Dr. Anusha",
     department: "Gynecology & Obstetrics",
     designation: "Consultant Obstetrician & Gynaecologist",
@@ -39,6 +26,19 @@ window.SMILE_DOCTORS = [
     opd: "",
     about:
       "Dr. Anusha is a Consultant Obstetrician & Gynaecologist at Smile Multi Speciality Hospital, caring for women through pregnancy, childbirth and every stage of life.",
+    expertise: [],
+  },
+  {
+    name: "Dr. Avinash",
+    department: "Orthopedics",
+    designation: "Orthopaedic Surgeon",
+    qualifications: "MS (Ortho)",
+    experience: null,
+    photo: "assets/doctors/dr-avinash.jpg",
+    languages: [],
+    opd: "",
+    about:
+      "Dr. Avinash is an Orthopaedic Surgeon at Smile Multi Speciality Hospital, caring for patients with bone, joint and spine problems, from fractures and injuries to long-term joint pain.",
     expertise: [],
   },
 ];
