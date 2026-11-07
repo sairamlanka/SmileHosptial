@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smile Multi Speciality Hospital</title>
+  <meta name="description" content="Smile Multi Speciality Hospital: Orthopedics, General Medicine, General Surgery and Gynecology under one roof." />
+  <meta name="theme-color" content="#05070d" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="is-loading">
+
+  <!-- ============ SPLASH (2 seconds) ============ -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash__glow"></div>
+    <img class="splash__logo" src="assets/logo.png" alt="" />
+    <div class="splash__bar"><span></span></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="nav__brand" aria-label="Smile Multi Speciality Hospital, home">
+        <img src="assets/logo-white.png" alt="Smile Multi Speciality Hospital" />
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Main">
+        <a href="#departments">Departments</a>
+        <a href="#about">Why Smile</a>
+        <a href="#journey">Your Visit</a>
+        <a href="#contact">Contact</a>
+        <a href="#appointment" class="btn btn--primary btn--sm">Book Appointment</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow reveal">Multi Speciality Care</p>
+          <h1 class="hero__title">
+            <span class="line"><span>Care that brings</span></span>
+            <span class="line"><span>back your <em>smile.</em></span></span>
+          </h1>
+          <p class="hero__lead reveal" data-delay="1">
+            Expert orthopedic, medical, surgical and women's care, delivered with warmth by
+            specialists who take the time to listen.
+          </p>
+          <div class="hero__cta reveal" data-delay="2">
+            <a href="#appointment" class="btn btn--primary magnetic">
+              Book an Appointment
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#departments" class="btn btn--ghost">Explore Departments</a>
+          </div>
+          <div class="hero__badges reveal" data-delay="3">
+            <div class="badge"><span class="dot dot--pulse"></span> 24/7 Emergency</div>
+            <div class="badge">Modern Operation Theatres</div>
+            <div class="badge">In-house Diagnostics</div>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal" data-delay="2">
+          <div class="hero__card tilt">
+            <div class="hero__card-glow"></div>
+            <img src="assets/logo-white.png" alt="" class="hero__card-logo" />
+            <div class="ecg" aria-hidden="true">
+              <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+                <path class="ecg__line" d="M0 40 H120 L135 40 L145 15 L158 68 L170 8 L182 52 L192 40 H260 L272 40 L280 28 L290 40 H400" />
+              </svg>
+            </div>
+            <div class="hero__card-row">
+              <div>
+                <span class="label">Departments</span>
+                <strong>4 Specialities</strong>
+              </div>
+              <div>
+                <span class="label">Emergency</span>
+                <strong>Round the clock</strong>
+              </div>
+            </div>
+          </div>
+          <div class="float-chip float-chip--a"><span class="chip-ico">🦴</span> Orthopedics</div>
+          <div class="float-chip float-chip--b"><span class="chip-ico">🩺</span> General Medicine</div>
+          <div class="float-chip float-chip--c"><span class="chip-ico">🤰</span> Gynecology</div>
+        </div>
+      </div>
+      <a href="#departments" class="scroll-cue" aria-label="Scroll to departments"><span></span></a>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Orthopedics</span><i>✦</i><span>General Medicine</span><i>✦</i><span>General Surgery</span><i>✦</i><span>Gynecology &amp; Obstetrics</span><i>✦</i><span>24/7 Emergency</span><i>✦</i><span>Diagnostics</span><i>✦</i>
+        <span>Orthopedics</span><i>✦</i><span>General Medicine</span><i>✦</i><span>General Surgery</span><i>✦</i><span>Gynecology &amp; Obstetrics</span><i>✦</i><span>24/7 Emergency</span><i>✦</i><span>Diagnostics</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ============ DEPARTMENTS ============ -->
+    <section class="section" id="departments">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Our Departments</p>
+          <h2 class="section__title reveal" data-delay="1">Four specialities. <em>One standard of care.</em></h2>
+          <p class="section__lead reveal" data-delay="2">Tap a department to see the conditions we treat and the procedures we offer.</p>
+        </div>
+
+        <div class="dept-grid">
+          <!-- Ortho -->
+          <article class="dept reveal tilt" data-dept="ortho" tabindex="0" role="button" aria-label="Orthopedics: view details">
+            <div class="dept__shine"></div>
+            <div class="dept__icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8a5 5 0 0 0-4.6 7L22 27.6 27.6 22 15 9.4A5 5 0 0 0 14 8Zm20 32a5 5 0 0 0 4.6-7L26 20.4 20.4 26 33 38.6A5 5 0 0 0 34 40Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="11" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="37" cy="37" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+            </div>
+            <span class="dept__num">01</span>
+            <h3>Orthopedics</h3>
+            <p>Bones, joints, spine and sports injuries, from fracture care to joint replacement.</p>
+            <span class="dept__more">View details <b>→</b></span>
+          </article>
+
+          <!-- General Medicine -->
+          <article class="dept reveal tilt" data-delay="1" data-dept="medicine" tabindex="0" role="button" aria-label="General Medicine: view details">
+            <div class="dept__shine"></div>
+            <div class="dept__icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6v12a8 8 0 0 0 16 0V6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M20 26v6a9 9 0 0 0 18 0v-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="38" cy="24" r="4" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+            </div>
+            <span class="dept__num">02</span>
+            <h3>General Medicine</h3>
+            <p>Diagnosis and long-term care for fever, diabetes, blood pressure, infections and more.</p>
+            <span class="dept__more">View details <b>→</b></span>
+          </article>
+
+          <!-- General Surgery -->
+          <article class="dept reveal tilt" data-delay="2" data-dept="surgery" tabindex="0" role="button" aria-label="General Surgery: view details">
+            <div class="dept__shine"></div>
+            <div class="dept__icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 30 18l4 4L12 44H8v-4Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M30 18 40 8a4 4 0 0 1 4 4L34 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="dept__num">03</span>
+            <h3>General Surgery</h3>
+            <p>Safe, modern surgery including laparoscopic procedures for faster recovery.</p>
+            <span class="dept__more">View details <b>→</b></span>
+          </article>
+
+          <!-- Gynecology -->
+          <article class="dept reveal tilt" data-delay="3" data-dept="gyno" tabindex="0" role="button" aria-label="Gynecology: view details">
+            <div class="dept__shine"></div>
+            <div class="dept__icon">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40s-14-8.4-14-19a8 8 0 0 1 14-5.3A8 8 0 0 1 38 21c0 10.6-14 19-14 19Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M14 24h6l2-4 4 8 2-4h6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="dept__num">04</span>
+            <h3>Gynecology &amp; Obstetrics</h3>
+            <p>Women's health at every stage, from pregnancy and safe delivery to lifelong wellness.</p>
+            <span class="dept__more">View details <b>→</b></span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal"><strong data-count="4">0</strong><span>Core specialities</span></div>
+        <div class="stat reveal" data-delay="1"><strong data-count="24" data-suffix="/7">0</strong><span>Emergency care</span></div>
+        <div class="stat reveal" data-delay="2"><strong data-count="365">0</strong><span>Days a year open</span></div>
+        <div class="stat reveal" data-delay="3"><strong data-count="1">0</strong><span>Roof for all your care</span></div>
+      </div>
+    </section>
+
+    <!-- ============ WHY SMILE ============ -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about__copy">
+          <p class="eyebrow reveal">Why Smile</p>
+          <h2 class="section__title reveal" data-delay="1">Healing feels better when <em>someone truly cares.</em></h2>
+          <p class="section__lead reveal" data-delay="2">
+            At Smile Multi Speciality Hospital we combine experienced specialists, modern equipment and
+            a calm, clean environment, so every visit feels reassuring for you and your family.
+          </p>
+        </div>
+        <div class="features">
+          <div class="feature reveal">
+            <div class="feature__ico">⚕</div>
+            <div><h4>Experienced specialists</h4><p>Consultants in every department, focused on accurate diagnosis and honest advice.</p></div>
+          </div>
+          <div class="feature reveal" data-delay="1">
+            <div class="feature__ico">✚</div>
+            <div><h4>24/7 emergency &amp; trauma</h4><p>Ready day and night for accidents, fractures and urgent medical needs.</p></div>
+          </div>
+          <div class="feature reveal" data-delay="2">
+            <div class="feature__ico">◎</div>
+            <div><h4>Modern operation theatres</h4><p>Sterile, well-equipped theatres for orthopedic, general and gynecological surgery.</p></div>
+          </div>
+          <div class="feature reveal" data-delay="3">
+            <div class="feature__ico">♡</div>
+            <div><h4>Patient-first approach</h4><p>Transparent treatment plans and clear guidance from admission to discharge.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="section section--dark" id="journey">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Your Visit</p>
+          <h2 class="section__title reveal" data-delay="1">Simple, from <em>first call</em> to full recovery.</h2>
+        </div>
+        <ol class="journey">
+          <li class="journey__step reveal"><span class="journey__n">1</span><h4>Book</h4><p>Call us or send a request online for your preferred department and time.</p></li>
+          <li class="journey__step reveal" data-delay="1"><span class="journey__n">2</span><h4>Consult</h4><p>Meet your specialist for a careful examination and an honest discussion.</p></li>
+          <li class="journey__step reveal" data-delay="2"><span class="journey__n">3</span><h4>Treat</h4><p>Get tests, procedures or surgery under one roof, without running around.</p></li>
+          <li class="journey__step reveal" data-delay="3"><span class="journey__n">4</span><h4>Recover</h4><p>Follow-ups and guidance until you are back on your feet, smiling.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ APPOINTMENT ============ -->
+    <section class="section" id="appointment">
+      <div class="container appt">
+        <div class="appt__copy">
+          <p class="eyebrow reveal">Appointments</p>
+          <h2 class="section__title reveal" data-delay="1">Book your visit <em>in a minute.</em></h2>
+          <p class="section__lead reveal" data-delay="2">Share a few details and our front desk will call you back to confirm a time.</p>
+          <a class="appt__phone reveal" data-delay="3" href="tel:+910000000000">
+            <span class="dot dot--pulse"></span>
+            <span><small>Emergency &amp; enquiries</small>+91 00000 00000</span>
+          </a>
+        </div>
+        <form class="appt__form reveal" data-delay="1" id="apptForm" novalidate>
+          <div class="field">
+            <input id="f-name" name="name" type="text" placeholder=" " required autocomplete="name" />
+            <label for="f-name">Full name</label>
+          </div>
+          <div class="field">
+            <input id="f-phone" name="phone" type="tel" placeholder=" " required pattern="[0-9+\-\s]{8,}" autocomplete="tel" />
+            <label for="f-phone">Phone number</label>
+          </div>
+          <div class="field field--select">
+            <select id="f-dept" name="department" required>
+              <option value="" disabled selected hidden></option>
+              <option>Orthopedics</option>
+              <option>General Medicine</option>
+              <option>General Surgery</option>
+              <option>Gynecology &amp; Obstetrics</option>
+            </select>
+            <label for="f-dept">Department</label>
+          </div>
+          <div class="field">
+            <input id="f-date" name="date" type="date" placeholder=" " required />
+            <label for="f-date" class="label--fixed">Preferred date</label>
+          </div>
+          <div class="field field--full">
+            <textarea id="f-msg" name="message" rows="3" placeholder=" "></textarea>
+            <label for="f-msg">Tell us briefly what's wrong (optional)</label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block magnetic">
+            <span class="btn__label">Request Appointment</span>
+          </button>
+          <p class="appt__note">We'll call you to confirm. For emergencies, please call directly.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section section--tight" id="contact">
+      <div class="container contact">
+        <div class="contact__card reveal">
+          <h4>Visit us</h4>
+          <p>Smile Multi Speciality Hospital<br />Street address, City, State, PIN</p>
+        </div>
+        <div class="contact__card reveal" data-delay="1">
+          <h4>Call</h4>
+          <p><a href="tel:+910000000000">+91 00000 00000</a><br />Emergency: 24 hours</p>
+        </div>
+        <div class="contact__card reveal" data-delay="2">
+          <h4>OPD hours</h4>
+          <p>Mon – Sat: 9:00 AM – 8:00 PM<br />Sunday: 10:00 AM – 1:00 PM</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <img src="assets/logo-white.png" alt="Smile Multi Speciality Hospital" class="footer__logo" />
+      <nav class="footer__links" aria-label="Footer">
+        <a href="#departments">Departments</a>
+        <a href="#about">Why Smile</a>
+        <a href="#appointment">Appointments</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer__copy">© <span id="year"></span> Smile Multi Speciality Hospital. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============ DEPARTMENT MODAL ============ -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <span class="eyebrow" id="modalNum"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalIntro" class="modal__intro"></p>
+      <div class="modal__cols">
+        <div><h5>Conditions we treat</h5><ul id="modalConditions"></ul></div>
+        <div><h5>Services &amp; procedures</h5><ul id="modalServices"></ul></div>
+      </div>
+      <a href="#appointment" class="btn btn--primary" data-close data-book>Book in this department</a>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
