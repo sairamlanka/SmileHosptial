@@ -719,3 +719,80 @@ body.is-ready .hero__title .line > span { transform: none; }
   .docp__facts { grid-template-columns: 1fr; }
 }
 .docp [hidden] { display: none !important; }
+
+/* ---------------- WhatsApp & Instagram ---------------- */
+:root { --wa: #25d366; --ig: #e1306c; }
+.social { display: flex; gap: 10px; }
+.social__link {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--line-2); background: rgba(255,255,255,0.04); color: var(--text);
+  transition: transform 0.4s var(--ease), background 0.3s, border-color 0.3s, color 0.3s;
+}
+.social__link svg { width: 20px; height: 20px; }
+.social__link:hover { transform: translateY(-3px); }
+.social__link--wa:hover { background: var(--wa); border-color: var(--wa); color: #fff; }
+.social__link--ig:hover { background: linear-gradient(45deg, #f9ce34, #ee2a7b 50%, #6228d7); border-color: transparent; color: #fff; }
+.footer .footer__links { margin-left: auto; }
+
+.contact { grid-template-columns: repeat(4, 1fr); }
+.contact__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip-link {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px;
+  font-size: 0.88rem; font-weight: 600; border: 1px solid var(--line-2); transition: transform 0.3s var(--ease), background 0.3s, border-color 0.3s;
+}
+.chip-link svg { width: 18px; height: 18px; }
+.contact__card .chip-link { color: var(--text); }
+.chip-link--wa svg { color: var(--wa); }
+.chip-link--ig svg { color: var(--ig); }
+.chip-link--wa:hover { background: rgba(37,211,102,0.12); border-color: rgba(37,211,102,0.5); transform: translateY(-2px); }
+.chip-link--ig:hover { background: rgba(225,48,108,0.12); border-color: rgba(225,48,108,0.5); transform: translateY(-2px); }
+
+.appt__wa {
+  display: flex; align-items: center; gap: 14px; width: fit-content; margin-top: 12px; padding: 14px 22px 14px 18px;
+  border-radius: 18px; border: 1px solid rgba(37,211,102,0.35); background: rgba(37,211,102,0.08);
+  font-weight: 700; transition: transform 0.4s var(--ease), background 0.3s;
+}
+.appt__wa svg { width: 26px; height: 26px; color: var(--wa); flex: none; }
+.appt__wa small { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.appt__wa:hover { transform: translateY(-3px); background: rgba(37,211,102,0.14); }
+.appt__copy .appt__phone { display: flex; width: fit-content; }
+
+.wa-float {
+  position: fixed; right: 24px; bottom: 24px; z-index: 70; display: grid; place-items: center;
+  width: 60px; height: 60px; border-radius: 50%; color: #fff; background: var(--wa);
+  box-shadow: 0 14px 30px -8px rgba(37,211,102,0.6); transition: transform 0.4s var(--ease), opacity 0.5s;
+  opacity: 0; pointer-events: none;
+}
+body.is-ready .wa-float { opacity: 1; pointer-events: auto; }
+.wa-float svg { width: 30px; height: 30px; }
+.wa-float::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--wa); animation: waRing 2.4s var(--ease) infinite; }
+@keyframes waRing { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.6); opacity: 0; } }
+.wa-float:hover { transform: scale(1.08); }
+.wa-float__tip {
+  position: absolute; right: 72px; white-space: nowrap; padding: 8px 14px; border-radius: 12px;
+  font-size: 0.85rem; font-weight: 600; color: var(--text); background: var(--ink-3); border: 1px solid var(--line-2);
+  opacity: 0; transform: translateX(8px); transition: opacity 0.3s, transform 0.4s var(--ease); pointer-events: none;
+}
+.wa-float:hover .wa-float__tip { opacity: 1; transform: none; }
+.toast { z-index: 300; }
+
+@media (max-width: 1080px) { .contact { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) {
+  .nav__menu-foot .social { margin-top: 16px; }
+  .nav__links .social__link {
+    display: grid !important; padding: 0 !important; border: 1px solid var(--line-2) !important; border-bottom: 1px solid var(--line-2) !important;
+    font-size: inherit !important; counter-increment: none !important; opacity: 1 !important; transform: none !important;
+  }
+  .nav__links .social__link::before { display: none; }
+}
+@media (max-width: 600px) {
+  .contact { grid-template-columns: 1fr; }
+  .wa-float { display: none; }
+  .mbar__wa {
+    flex: 0 0 auto; display: grid; place-items: center; width: 50px; border-radius: 14px;
+    color: #fff; background: var(--wa); box-shadow: 0 8px 20px -10px rgba(37,211,102,0.8);
+  }
+  .mbar__wa svg { width: 24px; height: 24px; }
+  .mbar__call { padding: 0 14px; }
+  .appt__phone, .appt__wa { width: 100%; }
+}
