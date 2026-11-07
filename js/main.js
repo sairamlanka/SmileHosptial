@@ -80,6 +80,34 @@
     document.getElementById("doctors").remove();
   }
 
+  /* ---------- Mobile: doctor carousel progress + quick-action bar ---------- */
+  const docProgress = document.getElementById("docProgress");
+  if (docGrid && docProgress) {
+    const upd = () => {
+      const max = docGrid.scrollWidth - docGrid.clientWidth;
+      const vis = docGrid.clientWidth / docGrid.scrollWidth;
+      docProgress.style.width = Math.max(vis, 0.12) * 100 + "%";
+      docProgress.style.transform = `translateX(${max > 0 ? (docGrid.scrollLeft / max) * ((1 / Math.max(vis, 0.12)) - 1) * 100 : 0}%)`;
+    };
+    docGrid.addEventListener("scroll", upd, { passive: true });
+    window.addEventListener("resize", upd);
+    upd();
+    // Re-run when the filter changes the number of cards
+    docFilter && docFilter.addEventListener("click", () => { docGrid.scrollLeft = 0; requestAnimationFrame(upd); });
+  }
+  const mbar = document.getElementById("mbar");
+  const apptSection = document.getElementById("appointment");
+  if (mbar) {
+    const showBar = () => {
+      const pastHero = window.scrollY > window.innerHeight * 0.6;
+      const r = apptSection ? apptSection.getBoundingClientRect() : null;
+      const atForm = r && r.top < window.innerHeight && r.bottom > 0;
+      mbar.classList.toggle("is-show", pastHero && !atForm);
+    };
+    window.addEventListener("scroll", showBar, { passive: true });
+    showBar();
+  }
+
   /* ---------- Nav ---------- */
   const nav = document.getElementById("nav");
   const navLinks = document.getElementById("navLinks");
@@ -93,6 +121,7 @@
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     body.style.overflow = open ? "hidden" : "";
+    body.classList.toggle("menu-open", open);
   };
   navToggle.addEventListener("click", () => setMenu(!navLinks.classList.contains("is-open")));
   navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
@@ -344,12 +373,19 @@
     $("docModalDept").textContent = d.department;
     $("docModalName").textContent = d.name;
     $("docModalRole").textContent = d.designation || "";
-    $("docModalExp").textContent = d.experience ? `${d.experience}+ years` : "—";
-    $("docModalQual").textContent = d.qualifications || "—";
-    $("docModalOpd").textContent = d.opd || "—";
-    $("docModalLang").textContent = (d.languages || []).join(", ") || "—";
+    const fact = (id, val) => {
+      $(id).textContent = val || "";
+      $(id).parentElement.hidden = !val;
+    };
+    fact("docModalExp", d.experience ? `${d.experience}+ years` : "");
+    fact("docModalQual", d.qualifications);
+    fact("docModalOpd", d.opd);
+    fact("docModalLang", (d.languages || []).join(", "));
     $("docModalAbout").textContent = d.about || "";
-    $("docModalTags").innerHTML = (d.expertise || []).map((t) => `<span>${esc(t)}</span>`).join("");
+    const tags = d.expertise || [];
+    $("docModalTags").innerHTML = tags.map((t) => `<span>${esc(t)}</span>`).join("");
+    $("docModalTags").hidden = !tags.length;
+    $("docModalTagsHead").hidden = !tags.length;
     docLastFocus = document.activeElement;
     docModal.hidden = false;
     body.style.overflow = "hidden";
