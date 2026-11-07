@@ -718,3 +718,4 @@ body.is-ready .hero__title .line > span { transform: none; }
   .doc { flex-basis: 84%; }
   .docp__facts { grid-template-columns: 1fr; }
 }
+.docp [hidden] { display: none !important; }

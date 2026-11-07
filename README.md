@@ -29,7 +29,6 @@ qualifications, years of experience, OPD timings, languages, short bio, areas of
 3. Add or remove entries to change how many doctors appear. If a photo is missing, a clean placeholder is shown.
 
 ## Before going live, update
-- The sample doctors in `js/doctors.js` (they are placeholders)
 - Phone number (`+91 00000 00000`) and address placeholders in `index.html`
 - OPD hours in the contact section
 - Hook the appointment form up to a backend, email service or WhatsApp link (it currently only shows a confirmation message)

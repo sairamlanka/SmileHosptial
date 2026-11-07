@@ -373,12 +373,19 @@
     $("docModalDept").textContent = d.department;
     $("docModalName").textContent = d.name;
     $("docModalRole").textContent = d.designation || "";
-    $("docModalExp").textContent = d.experience ? `${d.experience}+ years` : "—";
-    $("docModalQual").textContent = d.qualifications || "—";
-    $("docModalOpd").textContent = d.opd || "—";
-    $("docModalLang").textContent = (d.languages || []).join(", ") || "—";
+    const fact = (id, val) => {
+      $(id).textContent = val || "";
+      $(id).parentElement.hidden = !val;
+    };
+    fact("docModalExp", d.experience ? `${d.experience}+ years` : "");
+    fact("docModalQual", d.qualifications);
+    fact("docModalOpd", d.opd);
+    fact("docModalLang", (d.languages || []).join(", "));
     $("docModalAbout").textContent = d.about || "";
-    $("docModalTags").innerHTML = (d.expertise || []).map((t) => `<span>${esc(t)}</span>`).join("");
+    const tags = d.expertise || [];
+    $("docModalTags").innerHTML = tags.map((t) => `<span>${esc(t)}</span>`).join("");
+    $("docModalTags").hidden = !tags.length;
+    $("docModalTagsHead").hidden = !tags.length;
     docLastFocus = document.activeElement;
     docModal.hidden = false;
     body.style.overflow = "hidden";
